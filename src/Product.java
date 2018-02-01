@@ -118,11 +118,12 @@ public class Product {
 	
 	
 	
-	public String queryProductPrice(String pid) {
+	public int queryProductPrice(String pid) {
 		Connection myConn = null;
 		Statement myStmt = null;
 		ResultSet myRs = null;
-		String getProductPrice="";
+		int getProductPrice=0
+				;
 		try {
 			// 1. Get a connection to database
 			myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/testing", "root" , "");
@@ -137,7 +138,7 @@ public class Product {
 			
 			// 4. Process the result set
 			while (myRs.next()) {
-				getProductPrice = myRs.getString("p_price");
+				getProductPrice = myRs.getInt("p_price");
 			}
 			System.out.println(getProductPrice);
 			
